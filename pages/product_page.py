@@ -18,6 +18,14 @@ class ProductPage(BasePage):
         assert f"{product_title} has been added to your basket." == successful_adding_message, \
             f"Message of successful adding product is not correct on page {self.url}"
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGE_SUCCESSFUL_ADDING), \
+        "Success message is presented, but should not be"
+        
+    def should_disappear_message(self):
+        assert self.is_disappeared(*ProductPageLocators.MESSAGE_SUCCESSFUL_ADDING), \
+        "Success message is not disappear, but should be"
+    
     def should_be_product_price_in_message(self): 
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
         basket_price_message = self.browser.find_element(*ProductPageLocators.MESSAGE_BASKET_PRICE).text
