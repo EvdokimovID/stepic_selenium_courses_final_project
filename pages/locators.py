@@ -7,3 +7,13 @@ class MainPageLocators():
 class LoginPageLocators():
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
+    
+class ProductPageLocators():
+    LINK_PARAMETER = "promo=newYear"
+    PRODUCT_TITLE = (By.CSS_SELECTOR, "div.product_main h1")
+    PRODUCT_PRICE = (By.CSS_SELECTOR, "div.product_main .price_color")
+    ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, "button.btn-add-to-basket")
+    MESSAGE_SUCCESSFUL_ADDING = (By.CSS_SELECTOR, "div.alert:first-child")
+    MESSAGE_BASKET_PRICE = (By.CSS_SELECTOR, "div.alert:last-child")
+    PRODUCT_LINK = ("http://selenium1py.pythonanywhere.com/catalogue/"
+                    "the-shellcoders-handbook_209/?promo=newYear")

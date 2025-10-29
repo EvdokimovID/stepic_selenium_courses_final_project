@@ -1,0 +1,23 @@
+from .base_page import BasePage
+from .locators import ProductPageLocators
+
+
+class ProductPage(BasePage):
+        
+    def add_product_to_basket(self): 
+        self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON).click()
+
+    def should_be_promo_parameter_in_link(self):
+        current_url_is = self.browser.current_url
+        assert ProductPageLocators.LINK_PARAMETER in current_url_is, f"{current_url_is=}"
+
+    def should_be_product_title_in_message(self):
+        product_title = self.browser.find_element(*ProductPageLocators.PRODUCT_TITLE).text
+        successful_adding_message = self.browser.find_element(*ProductPageLocators.MESSAGE_SUCCESSFUL_ADDING).text
+        assert product_title in successful_adding_message, \
+            "Message of successful adding product is not correct"
+
+    def should_be_product_price_in_message(self): 
+        product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
+        basket_price_message = self.browser.find_element(*ProductPageLocators.MESSAGE_BASKET_PRICE).text
+        assert product_price in basket_price_message, "Total basket price is not correct"
