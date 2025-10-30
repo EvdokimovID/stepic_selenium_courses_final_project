@@ -1,12 +1,12 @@
-from .base_page import BasePage
 from .locators import ProductPageLocators
+from .base_page import BasePage
 
 
 class ProductPage(BasePage):
         
     def add_product_to_basket(self): 
         self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON).click()
-
+    
     def should_be_promo_parameter_in_link(self):
         current_url = self.browser.current_url
         assert ProductPageLocators.LINK_PARAMETER in current_url, f"Error url: {current_url}"
